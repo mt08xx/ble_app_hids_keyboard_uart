@@ -191,10 +191,10 @@ typedef struct
 
 STATIC_ASSERT(sizeof(buffer_list_t) % 4 == 0);
 
-static ble_hids_t                        m_hids;                                        /**< Structure used to identify the HID service. */
+ ble_hids_t                        m_hids;                                        /**< Structure used to identify the HID service. */
 static ble_bas_t                         m_bas;                                         /**< Structure used to identify the battery service. */
-static bool                              m_in_boot_mode = false;                        /**< Current protocol mode. */
-static uint16_t                          m_conn_handle = BLE_CONN_HANDLE_INVALID;       /**< Handle of the current connection. */
+ bool                              m_in_boot_mode = false;                        /**< Current protocol mode. */
+ uint16_t                          m_conn_handle = BLE_CONN_HANDLE_INVALID;       /**< Handle of the current connection. */
 
 static sensorsim_cfg_t                   m_battery_sim_cfg;                             /**< Battery Level sensor simulator configuration. */
 static sensorsim_state_t                 m_battery_sim_state;                           /**< Battery Level sensor simulator state. */
@@ -1484,6 +1484,10 @@ int main(void)
     conn_params_init();
     buffer_init();
 
+    {
+        void usr_uart_init(void);
+        usr_uart_init();
+    }
     // Start execution.
     timers_start();
     err_code = ble_advertising_start(BLE_ADV_MODE_FAST);

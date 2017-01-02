@@ -447,6 +447,11 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>usr_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\usr_uart.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
