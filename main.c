@@ -915,6 +915,10 @@ static void on_hid_rep_char_write(ble_hids_evt_t *p_evt)
                                              &report_val);
             APP_ERROR_CHECK(err_code);
 
+if(1){
+            //Send 1byte (Indicator)
+            while (app_uart_put(report_val) != NRF_SUCCESS);
+}else{
             if (!m_caps_on && ((report_val & OUTPUT_REPORT_BIT_MASK_CAPS_LOCK) != 0))
             {
                 // Caps Lock is turned On.
@@ -937,6 +941,7 @@ static void on_hid_rep_char_write(ble_hids_evt_t *p_evt)
             {
                 // The report received is not supported by this application. Do nothing.
             }
+}
         }
     }
 }
